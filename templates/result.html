@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Results</title>
+</head>
+
+<body>
+    <h1>Extracted Tables from PDF</h1>
+    {% for table in tables %}
+    <h3>Table {{ loop.index }}</h3>
+    <table border="1">
+        <tr>
+            {% for key in table[0].keys() %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in table %}
+        <tr>
+            {% for value in row.values() %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endfor %}
+    <p><a href="/download">Download JSON</a></p>
+    <p><a href="/">Upload another file</a></p>
+</body>
+
+</html>
